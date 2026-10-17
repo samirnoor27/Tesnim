@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================================== -->
+<!-- ملف موجز الأخبار RSS الخاص بمدونة تسنيم                                         -->
+<!-- الوظيفة: يتيح للقراء وقارئات التغذية ومحركات البحث متابعة المقالات الجديدة تلقائيًا -->
+<!-- ============================================================================== -->
+<rss version="2.0">
+  <channel>
+    <!-- [title]: اسم المدونة الرئيسي -->
+    <title>مدونة تسنيم</title>
+    
+    <!-- [link]: رابط الموقع الرئيسي (يتم استبدال USERNAME باسم مستخدم GitHub الخاص بك) -->
+    <link>https://USERNAME.github.io/arabic-blog/</link>
+    
+    <!-- [description]: وصف مختصر لنوع محتوى المدونة -->
+    <description>مقالات وأخبار وتحميلات</description>
+    
+    <!-- [language]: لغة المحتوى (العربية) -->
+    <language>ar</language>
+
+    <!-- ========================================================================== -->
+    <!-- قائمة المقالات (كل مقال يُمثَّل بفتحة وإغلاق الوسم <item>)                  -->
+    <!-- ========================================================================== -->
+
+    <!-- العنصر الأول -->
+    <item>
+      <title>الذكاء الاصطناعي واللغة العربية: فرص وتحديات</title>
+      <link>https://USERNAME.github.io/arabic-blog/post.html?id=ai-arabic</link>
+      <!-- [guid]: المعرف الفريد للمقال في قارئات الـ RSS (يكون نفس رابط المقال عادةً) -->
+      <guid>https://USERNAME.github.io/arabic-blog/post.html?id=ai-arabic</guid>
+      <category>مقالات</category>
+      <pubDate>2026-10-10</pubDate>
+      <description>كيف تتعامل النماذج اللغوية الحديثة مع ثراء العربية وتنوّع لهجاتها؟</description>
+    </item>
+
+    <!-- العنصر الثاني -->
+    <item>
+      <title>إطلاق جيل جديد من الهواتف القابلة للطي</title>
+      <link>https://USERNAME.github.io/arabic-blog/post.html?id=phone-launch</link>
+      <guid>https://USERNAME.github.io/arabic-blog/post.html?id=phone-launch</guid>
+      <category>أخبار</category>
+      <pubDate>2026-10-08</pubDate>
+      <description>شاشات أكثر متانة وبطاريات تدوم يومين كاملين.</description>
+    </item>
+
+    <!-- العنصر الثالث -->
+    <item>
+      <title>سبع عادات بسيطة لرفع إنتاجيتك اليومية</title>
+      <link>https://USERNAME.github.io/arabic-blog/post.html?id=productivity</link>
+      <guid>https://USERNAME.github.io/arabic-blog/post.html?id=productivity</guid>
+      <category>مقالات</category>
+      <pubDate>2026-10-05</pubDate>
+      <description>تغييرات صغيرة في روتينك تصنع فرقًا كبيرًا.</description>
+    </item>
+
+    <!-- العنصر الرابع -->
+    <item>
+      <title>مهرجان الألعاب العربي يكشف عن عناوين مستقلة مميزة</title>
+      <link>https://USERNAME.github.io/arabic-blog/post.html?id=games-fest</link>
+      <guid>https://USERNAME.github.io/arabic-blog/post.html?id=games-fest</guid>
+      <category>أخبار</category>
+      <pubDate>2026-10-02</pubDate>
+      <description>استوديوهات عربية ناشئة تخطف الأضواء بأفكار مبتكرة.</description>
+    </item>
+
+    <!-- العنصر الخامس -->
+    <item>
+      <title>دليلك لحماية خصوصيتك على الإنترنت</title>
+      <link>https://USERNAME.github.io/arabic-blog/post.html?id=privacy</link>
+      <guid>https://USERNAME.github.io/arabic-blog/post.html?id=privacy</guid>
+      <category>مقالات</category>
+      <pubDate>2026-09-28</pubDate>
+      <description>خطوات عملية لتأمين حساباتك وبياناتك الشخصية.</description>
+    </item>
+
+  </channel>
+</rss>

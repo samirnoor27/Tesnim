@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="alternate" type="application/rss+xml" title="مدونة تسنيم" href="feed.xml">
+    
+    <meta property="og:site_name" content="مدونة تسنيم">
+    <meta property="og:locale" content="ar_AR">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>مدونة تسنيم — مَنَصَّتُكَ لِلْتَّفَرُّدِ المَعْرِفِيّ</title>
+    <meta name="description" content="مقالات علمية ودينية، كتب متنوعة، أخبار، وأفضل البرامج والألعاب — بالعربية.">
+    <meta property="og:title" content="مدونة تسنيم — مَنَصَّتُكَ لِلْتَّفَرُّدِ المَعْرِفِيّ">
+    <meta property="og:description" content="مقالات علمية ودينية، كتب متنوعة، أخبار، وأفضل البرامج والألعاب — بالعربية.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Tesnim.png">
+</head>
+
+<body data-page="index">
+
+    <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+
+    <header class="site-header">
+        <div class="wrap bar">
+            
+            <a class="logo" href="index.html" aria-label="الرئيسية">
+                <img src="photo/Tesnim.png" alt="Tesnim Logo" class="logo-img">
+                <span>تَسْنِيم<span>.</span></span>
+            </a>
+            
+            <nav id="nav" aria-label="التنقل الرئيسي">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="category.html?c=مقالات">مقالات</a></li>
+                    <li><a href="category.html?c=أخبار">أخبار</a></li>
+                    <li><a href="books.html">الكتب</a></li>
+                    <li><a href="category.html">التصنيفات</a></li>
+                    <li><a href="downloads.html">التحميلات</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-controls">
+                <button id="theme-toggle" class="icon-btn" aria-label="تغيير المظهر">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+
+            <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="القائمة">☰</button>
+
+        </div>
+    </header>
+
+    <main id="main" class="wrap">
+        <section class="hero">
+            <h1>مَنَصَّتُكَ لِلْتَّفَرُّدِ المَعْرِفِيّ</h1>
+            <p>مقالات علمية ودينية، كتب متنوعة، أخبار، وأفضل البرامج والألعاب — بالعربية.</p>
+            
+            <form class="search" role="search" onsubmit="return false">
+                <label for="q" class="sr">ابحث في المدونة</label>
+                <input id="q" type="search" placeholder="ابحث عن مقال، كتاب، خبر أو وسم…" autocomplete="off">
+            </form>
+        </section>
+
+        <div id="filters" class="chips" aria-label="تصفية حسب التصنيف"></div>
+
+        <section aria-live="polite">
+            <div id="list" class="grid"></div>
+            <nav id="pager" class="pager" aria-label="ترقيم الصفحات"></nav>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap footer-bar">
+            <p>© <span id="year"></span> مدونة تسنيم — جميع الحقوق محفوظة · <a href="feed.xml">RSS</a></p>
+            <img src="photo/Signature.png" alt="Saidi Samir Signature" class="site-signature">
+        </div>
+    </footer>
+
+    <script src="scripts.js" defer></script>
+</body>
+</html>

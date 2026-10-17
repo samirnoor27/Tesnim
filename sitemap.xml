@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================================== -->
+<!-- خريطة الموقع (Sitemap) الخاصة بمدونة تسنيم                                     -->
+<!-- الوظيفة: تزويد محركات البحث (مثل Google) بقائمة كاملة وروابط الصفحات والمقالات   -->
+<!-- ============================================================================== -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ================= ================= ================= ================= -->
+  <!-- 1. الصفحات الرئيسية والثابتة في الموقع                                     -->
+  <!-- ================= ================= ================= ================= -->
+
+  <!-- رابط الصفحة الرئيسية -->
+  <url>
+    <loc>https://USERNAME.github.io/arabic-blog/</loc>
+  </url>
+
+  <!-- رابط صفحة التصنيفات والوسوم -->
+  <url>
+    <loc>https://USERNAME.github.io/arabic-blog/category.html</loc>
+  </url>
+
+  <!-- رابط صفحة تحميل البرامج والألعاب -->
+  <url>
+    <loc>https://USERNAME.github.io/arabic-blog/downloads.html</loc>
+  </url>
+
+  <!-- ================= ================= ================= ================= -->
+  <!-- 2. روابط المقالات (عند إضافة مقال جديد أضف وسماً ممائلاً مع تاريخ التحديث)   -->
+  <!-- ================= ================= ================= ================= -->
+
+  <!-- مقال: الذكاء الاصطناعي واللغة العربية -->
+  <url>
+    <loc>https://USERNAME.github.io/arabic-blog/post.html?id=ai-arabic</loc>
+    <!-- [lastmod]: تاريخ آخر تعديل أو نشر للمقال بتنسيق YYYY-MM-DD -->
+    <lastmod>2026-10-10</lastmod>
+  </url>
+
+  <!-- مقال: الهواتف القابلة للطي -->
+  <url>
+    <loc>https://USERNAME.github.io/arabic-blog/post.html?id=phone-launch</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+
+  <!-- مقال: سبع عادات لرفع الإنتاجية -->
+  <url>
+    <loc>https://USERNAME.github.io/arabic-blog/post.html?id=productivity</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+
+  <!-- مقال: مهرجان الألعاب العربي -->
+  <url>
+    <loc>https://USERNAME.github.io/arabic-blog/post.html?id=games-fest</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+
+  <!-- مقال: حماية الخصوصية -->
+  <url>
+    <loc>https://USERNAME.github.io/arabic-blog/post.html?id=privacy</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+</urlset>
