@@ -1,7 +1,17 @@
 /* ==============================================================================
    مدونة تسنيم — ملف الأنماط الرئيسي (Mobile-first, RTL)
    ============================================================================== */
+/* ==============================================================================
+   تحسين سرعة التصفح وانسيابية الحركة
+   ============================================================================== */
+html {
+  scroll-behavior: smooth;
+  content-visibility: auto;
+}
 
+img {
+  content-visibility: auto;
+}
 /* 1. المتغيرات العامة للألوان والأبعاد */
 :root {
   --bg: #faf8f4;
@@ -601,5 +611,79 @@ nav a[aria-current] {
     font-size: 1.25rem !important;
     cursor: pointer !important;
     z-index: 1001 !important;
+  }
+}
+/* ==============================================================================
+   تنسيق القائمة العلوية للهواتف والشاشات الصغيرة
+   ============================================================================== */
+@media screen and (max-width: 768px) {
+  .site-header .bar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  .site-header .logo {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+
+  .site-header .logo-img {
+    height: 36px !important;
+    width: auto !important;
+  }
+
+  .site-header nav#nav {
+    display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: var(--bg, #ffffff) !important;
+    border-bottom: 1px solid var(--line, #eee) !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    padding: 1rem 0 !important;
+    z-index: 9999 !important;
+  }
+
+  .site-header nav#nav.open {
+    display: block !important;
+  }
+
+  .site-header nav#nav ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+  }
+
+  .site-header nav#nav a {
+    display: block !important;
+    padding: 0.5rem 1rem !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .header-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .menu-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.4rem 0.6rem !important;
+    font-size: 1.2rem !important;
+    cursor: pointer !important;
   }
 }
