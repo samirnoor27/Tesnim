@@ -1,54 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap">
-    
-    <link rel="stylesheet" href="styles.css">
-    <title>قراءة الكتاب — مدونة تسنيم</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قراءة الكتاب — تسنيم</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .viewer-box {
+      width: 100%;
+      height: 88vh;
+      margin-top: 1rem;
+      border: 1px solid var(--line, #e2e8f0);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+    iframe, object {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
+<body>
 
-<body data-page="bookView">
+  <main class="container" style="padding: 1rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2 id="book-title" style="font-size: 1.25rem;">جاري تحميل الكتاب...</h2>
+      <a href="index.html" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">← العودة للمكتبة</a>
+    </div>
 
-    <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+    <div class="viewer-box" id="viewer-container">
+      <!-- محتوى القارئ -->
+    </div>
+  </main>
 
-    <header class="site-header">
-        <div class="wrap bar">
-            <a class="logo" href="index.html" aria-label="الرئيسية">
-                <img src="photo/Tesnim.png" alt="Tesnim Logo" class="logo-img">
-                <span>تَسْنِيم<span>.</span></span>
-            </a>
-            
-            <nav id="nav" aria-label="التنقل الرئيسي">
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="books.html">الكتب</a></li>
-                </ul>
-            </nav>
+  <script src="scripts.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const bookId = params.get("id");
+      
+      // البحث عن الكتاب المختار
+      const book = BOOKS.find(b => b.id === bookId) || BOOKS[0];
+      const container = document.getElementById("viewer-container");
+      const titleEl = document.getElementById("book-title");
 
-            <div class="header-controls">
-                <button id="theme-toggle" class="icon-btn" aria-label="تغيير المظهر">
-                    <span class="theme-icon">🌙</span>
-                </button>
-            </div>
-        </div>
-    </header>
+      if (book && container) {
+        const pdfPath = book.pdfUrl || book.pdf;
+        titleEl.textContent = book.title;
+        document.title = `${book.title} — قراءة أونلاين`;
 
-    <main id="main" class="wrap">
-        <div id="book-details"></div>
-    </main>
-
-    <footer class="site-footer">
-        <div class="wrap footer-bar">
-            <p>© <span id="year"></span> مدونة تسنيم — جميع الحقوق محفوظة · <a href="feed.xml">RSS</a></p>
-            <img src="photo/Signature.png" alt="Saidi Samir Signature" class="site-signature">
-        </div>
-    </footer>
-
-    <script src="scripts.js" defer></script>
+        container.innerHTML = `
+          <object data="${pdfPath}" type="application/pdf">
+            <iframe src="https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + '/' + pdfPath)}&embedded=true">
+              عفواً، لا يمكن عرض الملف مباشرة. يمكنك <a href="${pdfPath}" download>تحميل الكتاب من هنا</a>.
+            </iframe>
+          </object>
+        `;
+      }
+    });
+  </script>
 </body>
 </html>
