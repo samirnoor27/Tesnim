@@ -1,5 +1,5 @@
 /* ==============================================================================
-   مدونة تسنيم — المنطق البرمجي الرئيسي المحدث والمصحح
+   مدونة تسنيم — المنطق البرمجي الرئيسي المحدث والمحسن للسرعة والقراءة
    ============================================================================== */
 "use strict";
 
@@ -10,7 +10,7 @@ const POSTS = [
     cat: "مقالات",
     tags: ["فتوى", "الشيخ فركوس", "تزوير", "توبة", "أحكام شرعية"],
     date: "2026-10-17",
-    img: "fatwa.jpg",
+    img: "photo/fatwa.jpg",
     excerpt: "الفتوى رقم 1442 لفضيلة الشيخ أ.د أبي عبد المعز محمد علي فركوس في بيان حكم تزوير الوثائق والجنسية للوصول للمنافع وبيان ضوابط التوبة وإشكالات النسب والميراث.",
     body: [
       "الفتوى رقم: ١٤٤٢ | الصنف: فتاوى متنوِّعة",
@@ -27,7 +27,7 @@ const POSTS = [
       "(٢) مُتَّفَقٌ عليه: أخرجه البخاريُّ في «الأدب» باب: عقوقُ الوالدَيْن مِن الكبائر (٥٩٧٦)، ومسلمٌ في «الإيمان» (٨٧).",
       "(٣) مُتَّفَقٌ عليه: أخرجه البخاريُّ في «المغازي» باب غزوة الطائف في شَوَّالٍ سَنَةَ ثَمَانٍ؛ قالَهُ مُوسَى بْنُ عُقْبَةَ (٤٣٣٦) وفي «الفرائض» بابُ مَن ادَّعَى إلى غَيْرِ أَبِيهِ (٦٧٦٦)، ومسلمٌ في «الإيمان» (٦٣)، مِنْ حديثِ سعد بن أبي وقَّاصٍ وأبي بكرة الثَّقَفِيَّ رضي الله عنهما.",
       "(٤) أخرجه مسلمٌ في «الحجِّ» وفي «العتق» (١٣٧٠) مِنْ حديثِ عليِّ بن أبي طالبٍ رضي الله عنه.",
-      "المصدر: الموقع الرسمي لفضيلة الشيخ أبي عبد المعزّ محمد علي فركوس (ferكous.com)"
+      "المصدر: الموقع الرسمي لفضيلة الشيخ أبي عبد المعزّ محمد علي فركوس (ferkous.com)"
     ]
   },
   {
@@ -36,7 +36,7 @@ const POSTS = [
     cat: "أخبار",
     tags: ["OpenAI", "الذكاء الاصطناعي", "أمن المعلومات", "تقنية"],
     date: "2026-10-16",
-    img: "FBI.jpg",
+    img: "photo/FBI.jpg",
     excerpt: "شهدت الأوساط التقنية والأمنية في الولايات المتحدة حالة من الجدل الواسع عقب تداول أنباء عن توقيف مكتب التحقيقات الفيدرالي (FBI) للمهندس عبدالرحمن الفوزان.",
     body: [
       "تعيش أروقة وادي السيليكون على وقع صدمة مدوية بعد تسريب معلومات تشير إلى إقدام المهندس عبدالرحمن الفوزان على وضع جهاز تسريب وصوتيات داخل غرفة اجتماعات رفيعة المستوى مخصصة لكبار مسؤولي شركة OpenAI لإجراء إحاطات مغلقة مع ممثلين عن الحكومة الأمريكية.",
@@ -50,7 +50,7 @@ const POSTS = [
     cat: "أخبار",
     tags: ["تسلا", "إيلون ماسك", "تقنية", "سيارات"],
     date: "2026-10-16",
-    img: "tesla.jpg",
+    img: "photo/tesla.jpg",
     excerpt: "كشف الملياردير الأمريكي إيلون ماسك عن تفاصيل غير مسبوقة حول طراز سيارة تسلا رودستر الجديد، مؤكدًا تمتلكها قدرة فريدة على الارتفاع عن الأرض والقفز لثوانٍ معدودة.",
     body: [
       "أحدث إيلون ماسك موجة واسعة من الجدل والذهول في أوساط تكنولوجيا السيارات بعد إعلانه عن القدرات الاستثنائية لسيارة تسلا رودستر المستقبلية.",
@@ -66,7 +66,7 @@ const BOOKS = [
     author: "المجلس الأعلى للغة العربية — رئاسة الجمهورية",
     cat: "إدارية",
     desc: "دليل مرجعي شامل يتضمن النصوص التنظيمية، المراسلات والوثائق الإدارية، المحررات، والوثائق الشخصية والإدارية المختلفة.",
-    cover: "book2.jpg",
+    cover: "photo/book2.jpg",
     pdfUrl: "books/book2.pdf"
   },
   {
@@ -75,7 +75,7 @@ const BOOKS = [
     author: "من اعداد الطالب الدام محمد",
     cat: "علمية",
     desc: "مذكرة تخرج ضمن متطلبات نيل شهادة الماستر في الحقوق تخصص جريمة و أمن",
-    cover: "modakira1.png",
+    cover: "photo/modakira1.png",
     pdfUrl: "books/modakira1.pdf"
   },
   {
@@ -84,7 +84,7 @@ const BOOKS = [
     author: "روبير بلو (ترجمة: د. محمد الفاضل)",
     cat: "علمية",
     desc: "محاضرات ألقاها الأستاذ روبير بلو على طلاب السنة الثانية بكلية الحقوق بالجامعة السورية.",
-    cover: "book-idari.jpg",
+    cover: "photo/book-idari.jpg",
     pdfUrl: "books/robert-pellew-lectures.pdf"
   }
 ];
@@ -104,7 +104,7 @@ const $ = (selector) => document.querySelector(selector);
 const qs = new URLSearchParams(location.search);
 
 const esc = (str) =>
-  String(str).replace(/[&<>"']/g, (c) => ({
+  String(str || "").replace(/[&<>"']/g, (c) => ({
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
@@ -119,7 +119,7 @@ const fmt = (dateStr) =>
     day: "numeric"
   });
 
-// دالة ذكية ومضمونة لدعم مجلد photo/ بشكل تلقائي دون أخطاء
+// دالة ذكية لمسارات الصور لتسريع الجلب وتفادي الروابط المكسورة
 const img = (seed, width = 800, height = 450) => {
   if (!seed) return `https://picsum.photos/seed/tasneem/${width}/${height}`;
   
@@ -236,8 +236,6 @@ const pages = {
     const post = POSTS.find((x) => x.id === qs.get("id")) || POSTS[0];
     document.title = `${post.title} — مدونة تسنيم`;
 
-    const currentUrl = encodeURIComponent(location.href);
-
     const art = $("#article");
     if (art) {
       art.innerHTML = `
@@ -292,7 +290,7 @@ const pages = {
               .map(
                 (b) => `
             <article class="card">
-              <img src="${img(b.cover, 400, 600)}" alt="${esc(b.title)}" loading="lazy">
+              <img src="${img(b.cover, 400, 600)}" alt="${esc(b.title)}" loading="lazy" decoding="async" width="400" height="600">
               <div class="card-body">
                 <span class="badge">${b.cat}</span>
                 <h2>${esc(b.title)}</h2>
@@ -300,7 +298,7 @@ const pages = {
                 <p>${esc(b.desc)}</p>
                 <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
                   <a class="btn" href="book-view.html?id=${b.id}">قراءة أونلاين</a>
-                  <a class="btn" style="background: var(--card); color: var(--ink); border: 1px solid var(--line);" href="${b.pdfUrl}" download>تحميل PDF</a>
+                  <a class="btn" style="background: var(--card, #fff); color: var(--ink, #000); border: 1px solid var(--line, #ccc);" href="${b.pdfUrl}" download>تحميل PDF</a>
                 </div>
               </div>
             </article>
