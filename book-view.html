@@ -12,42 +12,65 @@
       background: var(--bg, #f8fafc);
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
+      align-items: center;
+      min-height: 100vh;
     }
+
     .viewer-header {
+      width: 100%;
+      max-width: 900px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.75rem 1rem;
       background: var(--card-bg, #ffffff);
       border-bottom: 1px solid var(--line, #e2e8f0);
-      z-index: 10;
+      box-sizing: border-box;
     }
+
+    /* تصغير حجم خانة القارئ وتقليل استهلاك الذاكرة */
     .viewer-container {
-      flex: 1;
-      width: 100%;
-      height: calc(100vh - 60px);
+      width: 95%;
+      max-width: 850px;
+      height: 70vh; /* تحديد ارتفاع 70% بدلاً من الشاشة الكاملة لتخفيف معالجة الصفحات */
+      max-height: 650px;
+      margin: 1rem auto;
+      border: 1px solid var(--line, #cbd5e1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      background: #ffffff;
     }
-    iframe, embed {
+
+    embed, iframe {
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    /* تحسين إضافي للهواتف الذكية */
+    @media (max-width: 768px) {
+      .viewer-container {
+        width: 100%;
+        height: 60vh;
+        margin: 0.5rem 0;
+        border-radius: 0;
+      }
     }
   </style>
 </head>
 <body>
 
   <div class="viewer-header">
-    <h3 id="book-title" style="margin: 0; font-size: 1.1rem;">جاري فتح الكتاب...</h3>
+    <h3 id="book-title" style="margin: 0; font-size: 1rem;">جاري فتح الكتاب...</h3>
     <div>
-      <a id="download-btn" href="#" download class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.85rem; margin-left: 0.5rem;">تحميل الـ PDF</a>
-      <a href="index.html" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.85rem; background: #64748b;">إغلاق ✕</a>
+      <a id="download-btn" href="#" download class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.85rem; margin-left: 0.25rem;">تحميل الـ PDF</a>
+      <a href="index.html" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.85rem; background: #64748b;">إغلاق ✕</a>
     </div>
   </div>
 
   <div class="viewer-container" id="viewer-container">
-    <!-- سيتم عرض قارئ PDF مباشرة -->
+    <!-- محتوى قارئ الـ PDF المدمج المصغر -->
   </div>
 
   <script src="scripts.js"></script>
@@ -65,9 +88,8 @@
         const pdfPath = book.pdfUrl || book.pdf;
         const container = document.getElementById("viewer-container");
 
-        // استخدام القارئ المباشر للمتصفح الموثوق والسريع
         container.innerHTML = `
-          <embed src="${pdfPath}#toolbar=1&navpanes=0" type="application/pdf" width="100%" height="100%" />
+          <embed src="${pdfPath}#toolbar=1&navpanes=0" type="application/pdf" />
         `;
       }
     });
