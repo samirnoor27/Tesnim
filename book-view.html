@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>قراءة الكتاب — تسنيم</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- جلب مكتبة PDF.js الخفيفة -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -23,66 +25,77 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.75rem 1rem;
-      background: #ffffff !important; /* خلفية بيضاء ثابتة */
-      color: #0f172a !important;      /* لون نص داكن واضح */
-      border-bottom: 1px solid #e2e8f0;
+      background: #ffffff !important;
+      color: #0f172a !important;
+      border-bottom: 1px solid #cbd5e1;
       box-sizing: border-box;
     }
 
     .viewer-header h3 {
       margin: 0;
       font-size: 1rem;
-      color: #0f172a !important; /* ضمان ظهور عنوان الكتاب باللون الداكن */
+      color: #0f172a !important;
       font-weight: 700;
     }
 
-    /* تصغير حجم خانة القارئ وتقليل استهلاك الذاكرة */
     .viewer-container {
       width: 95%;
       max-width: 850px;
-      height: 70vh; /* تحديد ارتفاع 70% بدلاً من الشاشة الكاملة لتخفيف معالجة الصفحات */
-      max-height: 650px;
+      height: 75vh;
       margin: 1rem auto;
-      border: 1px solid var(--line, #cbd5e1);
+      border: 1px solid #cbd5e1;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      overflow-y: auto;
+      background: #525659;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    canvas {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 1rem;
+      max-width: 98%;
+      height: auto !important;
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
       background: #ffffff;
-    }
-
-    embed, iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* تحسين إضافي للهواتف الذكية */
-    @media (max-width: 768px) {
-      .viewer-container {
-        width: 100%;
-        height: 60vh;
-        margin: 0.5rem 0;
-        border-radius: 0;
-      }
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
 
   <div class="viewer-header">
-    <h3 id="book-title" style="margin: 0; font-size: 1rem;">جاري فتح الكتاب...</h3>
+    <h3 id="book-title">جاري تحميل الكتاب...</h3>
     <div>
       <a id="download-btn" href="#" download class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.85rem; margin-left: 0.25rem;">تحميل الـ PDF</a>
-      <a href="index.html" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.85rem; background: #64748b;">إغلاق ✕</a>
+      <a href="index.html" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.85rem; background: #64748b; color: #fff;">إغلاق ✕</a>
     </div>
   </div>
 
+  <div class="controls" id="pdf-controls" style="display:none;">
+    <button id="prev-page" class="btn" style="padding:0.2rem 0.6rem;">السابق</button>
+    <span style="font-size: 0.9rem; color: #0f172a;">صفحة <span id="page-num">1</span> من <span id="page-count">--</span></span>
+    <button id="next-page" class="btn" style="padding:0.2rem 0.6rem;">التالي</button>
+  </div>
+
   <div class="viewer-container" id="viewer-container">
-    <!-- محتوى قارئ الـ PDF المدمج المصغر -->
+    <canvas id="pdf-render"></canvas>
   </div>
 
   <script src="scripts.js"></script>
   <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
     document.addEventListener("DOMContentLoaded", () => {
       const params = new URLSearchParams(window.location.search);
       const bookId = params.get("id");
@@ -93,12 +106,66 @@
         document.getElementById("download-btn").href = book.pdfUrl || book.pdf;
         document.title = `${book.title} — تسنيم`;
 
-        const pdfPath = book.pdfUrl || book.pdf;
-        const container = document.getElementById("viewer-container");
+        const url = book.pdfUrl || book.pdf;
+        let pdfDoc = null,
+            pageNum = 1,
+            pageIsRendering = false,
+            pageNumIsPending = null;
 
-        container.innerHTML = `
-          <embed src="${pdfPath}#toolbar=1&navpanes=0" type="application/pdf" />
-        `;
+        const scale = 1.2,
+              canvas = document.getElementById('pdf-render'),
+              ctx = canvas.getContext('2d');
+
+        const renderPage = num => {
+          pageIsRendering = true;
+          pdfDoc.getPage(num).then(page => {
+            const viewport = page.getViewport({ scale });
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            const renderCtx = {
+              canvasContext: ctx,
+              viewport
+            };
+
+            page.render(renderCtx).promise.then(() => {
+              pageIsRendering = false;
+              if (pageNumIsPending !== null) {
+                renderPage(pageNumIsPending);
+                pageNumIsPending = null;
+              }
+            });
+
+            document.getElementById('page-num').textContent = num;
+          });
+        };
+
+        const queueRenderPage = num => {
+          if (pageIsRendering) {
+            pageNumIsPending = num;
+          } else {
+            renderPage(num);
+          }
+        };
+
+        pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
+          pdfDoc = pdfDoc_;
+          document.getElementById('page-count').textContent = pdfDoc.numPages;
+          document.getElementById('pdf-controls').style.display = 'flex';
+          renderPage(pageNum);
+        });
+
+        document.getElementById('prev-page').addEventListener('click', () => {
+          if (pageNum <= 1) return;
+          pageNum--;
+          queueRenderPage(pageNum);
+        });
+
+        document.getElementById('next-page').addEventListener('click', () => {
+          if (pageNum >= pdfDoc.numPages) return;
+          pageNum++;
+          queueRenderPage(pageNum);
+        });
       }
     });
   </script>
