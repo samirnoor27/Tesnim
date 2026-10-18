@@ -1,5 +1,5 @@
 /* ==============================================================================
-   مدونة تسنيم — المنطق البرمجي الرئيسي المحدث والمحسن للسرعة والقراءة
+   مدونة تسنيم — المنطق البرمجي الرئيسي المحدث والمصحح
    ============================================================================== */
 "use strict";
 
@@ -67,16 +67,8 @@ const BOOKS = [
     cat: "إدارية",
     desc: "دليل مرجعي شامل يتضمن النصوص التنظيمية، المراسلات والوثائق الإدارية، المحررات، والوثائق الشخصية والإدارية المختلفة.",
     cover: "photo/book2.jpg",
-    pdfUrl: "books/book2.pdf"
-  },
-  {
-    id: "book-1",
-    title: "مذكرة تخرج الأمن السيبراني",
-    author: "من اعداد الطالب الدام محمد",
-    cat: "علمية",
-    desc: "مذكرة تخرج ضمن متطلبات نيل شهادة الماستر في الحقوق تخصص جريمة و أمن",
-    cover: "photo/modakira1.png",
-    pdfUrl: "books/modakira1.pdf"
+    driveEmbedUrl: "https://drive.google.com/file/d/1vVPlCGD7DrnDJiu1cenvP-n5CEKSBhrn/preview",
+    pdfUrl: "https://drive.google.com/uc?export=download&id=1vVPlCGD7DrnDJiu1cenvP-n5CEKSBhrn"
   },
   {
     id: "law-lectures-robert-pellew",
@@ -86,7 +78,16 @@ const BOOKS = [
     desc: "محاضرات ألقاها الأستاذ روبير بلو على طلاب السنة الثانية بكلية الحقوق بالجامعة السورية.",
     cover: "photo/book-idari.jpg",
     driveEmbedUrl: "https://drive.google.com/file/d/1vVPlCGD7DrnDJiu1cenvP-n5CEKSBhrn/preview",
-    pdfUrl: "https://drive.google.com/uc?export=download&id=1vVPlCGD7DrnDJiu1cenvP-n5CEKSBhrn
+    pdfUrl: "https://drive.google.com/uc?export=download&id=1vVPlCGD7DrnDJiu1cenvP-n5CEKSBhrn"
+  },
+  {
+    id: "book-1",
+    title: "مذكرة تخرج الأمن السيبراني",
+    author: "من اعداد الطالب الدام محمد",
+    cat: "علمية",
+    desc: "مذكرة تخرج ضمن متطلبات نيل شهادة الماستر في الحقوق تخصص جريمة و أمن",
+    cover: "photo/modakira1.png",
+    pdfUrl: "books/modakira1.pdf"
   }
 ];
 
@@ -120,7 +121,6 @@ const fmt = (dateStr) =>
     day: "numeric"
   });
 
-// دالة ذكية لمسارات الصور لتسريع الجلب وتفادي الروابط المكسورة
 const img = (seed, width = 800, height = 450) => {
   if (!seed) return `https://picsum.photos/seed/tasneem/${width}/${height}`;
   
