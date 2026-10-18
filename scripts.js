@@ -67,8 +67,8 @@ const BOOKS = [
     cat: "إدارية",
     desc: "دليل مرجعي شامل يتضمن النصوص التنظيمية، المراسلات والوثائق الإدارية، المحررات، والوثائق الشخصية والإدارية المختلفة.",
     cover: "photo/book2.jpg",
-    driveEmbedUrl: "https://drive.google.com/file/d/1vVPlCGD7DrnDJiu1cenvP-n5CEKSBhrn/preview",
-    pdfUrl: "https://drive.google.com/uc?export=download&id=1vVPlCGD7DrnDJiu1cenvP-n5CEKSBhrn"
+    driveEmbedUrl: "https://drive.google.com/file/d/1Zsthq4tVqpqmAMQWVDt-LSOCr-DjxhGJ/preview",
+    pdfUrl: "https://drive.google.com/uc?export=download&id=1Zsthq4tVqpqmAMQWVDt-LSOCr-DjxhGJ"
   },
   {
     id: "law-lectures-robert-pellew",
@@ -87,7 +87,8 @@ const BOOKS = [
     cat: "علمية",
     desc: "مذكرة تخرج ضمن متطلبات نيل شهادة الماستر في الحقوق تخصص جريمة و أمن",
     cover: "photo/modakira1.png",
-    pdfUrl: "books/modakira1.pdf"
+    driveEmbedUrl: "https://drive.google.com/file/d/1z3KooH_oqknjD6hOvMnKXeOoM-Rfd3hx/preview",
+    pdfUrl: "https://drive.google.com/uc?export=download&id=1z3KooH_oqknjD6hOvMnKXeOoM-Rfd3hx"
   }
 ];
 
