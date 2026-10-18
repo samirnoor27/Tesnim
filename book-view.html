@@ -16,7 +16,6 @@
       min-height: 100vh;
     }
 
-    /* الشريط العلوي باللون الأبيض والكتابة الداكنة الواضحة */
     .viewer-header {
       width: 100%;
       max-width: 900px;
@@ -37,7 +36,6 @@
       font-weight: 700;
     }
 
-    /* خانة القارئ الخفيفة والمحددة لتسريع الاستجابة */
     .viewer-container {
       width: 95%;
       max-width: 850px;
@@ -51,7 +49,7 @@
       background: #ffffff;
     }
 
-    iframe, object {
+    iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -73,12 +71,12 @@
     <h3 id="book-title">جاري فتح الكتاب...</h3>
     <div>
       <a id="download-btn" href="#" download class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.85rem; margin-left: 0.25rem;">تحميل الـ PDF</a>
-      <a href="index.html" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.85rem; background: #64748b; color: #fff;">إغلاق ✕</a>
+      <a href="books.html" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.85rem; background: #64748b; color: #fff;">إغلاق ✕</a>
     </div>
   </div>
 
   <div class="viewer-container" id="viewer-container">
-    <!-- قارئ النصوص المباشر والمثالي للغة العربية -->
+    <!-- قارئ Google Drive للمعاينة أونلاين -->
   </div>
 
   <script src="scripts.js"></script>
@@ -93,16 +91,23 @@
         document.getElementById("download-btn").href = book.pdfUrl || book.pdf;
         document.title = `${book.title} — تسنيم`;
 
-        const pdfPath = book.pdfUrl || book.pdf;
         const container = document.getElementById("viewer-container");
+        
+        // جلب رابط التضمين أو تحويل رابط Google Drive تلقائياً لمشرع المعاينة preview
+        let embedUrl = book.driveEmbedUrl;
+        if (!embedUrl && book.pdfUrl) {
+          if (book.pdfUrl.includes('drive.google.com')) {
+            const match = book.pdfUrl.match(/id=([a-zA-Z0-9_-]+)/) || book.pdfUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+            if (match && match[1]) {
+              embedUrl = `https://drive.google.com/file/d/${match[1]}/preview`;
+            }
+          } else {
+            embedUrl = book.pdfUrl;
+          }
+        }
 
-        /* استخدام المحرك المباشر المحسن لعرض الخطوط العربية وتشكيلها الأصلي بنقاء تام */
         container.innerHTML = `
-          <object data="${pdfPath}#toolbar=1&navpanes=0" type="application/pdf" width="100%" height="100%">
-            <iframe src="${pdfPath}#toolbar=1&navpanes=0" width="100%" height="100%">
-              لا يدعم متصفحك العرض المباشر. يمكنك <a href="${pdfPath}" download>تحميل الكتاب من هنا</a>.
-            </iframe>
-          </object>
+          <iframe src="${embedUrl}" allow="autoplay"></iframe>
         `;
       }
     });
