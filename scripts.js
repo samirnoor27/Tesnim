@@ -85,7 +85,8 @@ const BOOKS = [
     cat: "علمية",
     desc: "محاضرات ألقاها الأستاذ روبير بلو على طلاب السنة الثانية بكلية الحقوق بالجامعة السورية.",
     cover: "photo/book-idari.jpg",
-    pdfUrl: "books/robert-pellew-lectures.pdf"
+    driveEmbedUrl: "https://drive.google.com/file/d/1vVPlCGD7DrnDJiu1cenvP-n5CEKSBhrn/preview",
+    pdfUrl: "https://drive.google.com/uc?export=download&id=1vVPlCGD7DrnDJiu1cenvP-n5CEKSBhrn
   }
 ];
 
